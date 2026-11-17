@@ -16,7 +16,7 @@ pipeline {
             steps {
 
                 git branch: 'main',
-                    url: 'https://github.com/mayuri67/python-jenkins-project.git'
+                    url: 'https://github.com/mayuri67/python-jenkins-project.git', credentialsId: 'githubcredentials',
 
             }
         }
@@ -79,7 +79,7 @@ pipeline {
                     usernamePassword(
                         credentialsId: 'dockerhub-creds',
                         usernameVariable: 'DOCKERHUB_USERNAME',
-                        passwordVariable: 'DOCKER_TOKEN'
+                        passwordVariable: 'DOCKERHUB_TOKEN'
                     )
                 ]) {
 
