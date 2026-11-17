@@ -16,7 +16,7 @@ pipeline {
             steps {
 
                 git branch: 'main',
-                    url: 'https://github.com/mayuri67/python-jenkins-project.git', credentialsId: 'githubcredentials'
+                    url: 'https://github.com/mayuri67/python-jenkins-repo.git', credentialsId: 'githubcredentials'
 
             }
         }
