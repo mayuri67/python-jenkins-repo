@@ -97,24 +97,26 @@ pipeline {
         }
 
         stage('Deploy to Kubernetes') {
+    steps {
+        sh '''
+            echo "Deploying Python application to MicroK8s"
 
-            steps {
+            /snap/bin/microk8s kubectl apply -f k8s/deployment.yaml
 
-                sh '''
-                    kubectl apply -f k8s/deployment.yaml
+            /snap/bin/microk8s kubectl apply -f k8s/service.yaml
 
-                    kubectl apply -f k8s/service.yaml
+            echo "Checking deployment status"
 
-                    kubectl set image deployment/python-app \
-                    python-app=$DOCKER_IMAGE:$IMAGE_TAG
+            /snap/bin/microk8s kubectl get deployments
 
-                    kubectl rollout status deployment/python-app \
-                    --timeout=180s
-                '''
+            /snap/bin/microk8s kubectl get pods
 
-            }
-        }
+            /snap/bin/microk8s kubectl get services
 
+            /snap/bin/microk8s kubectl rollout status deployment/python-app
+        '''
+    }
+}
     }
 
     post {
