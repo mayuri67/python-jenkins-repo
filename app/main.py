@@ -4,7 +4,7 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message": "Hello from Python Jenkins CI/CD"}
+    return {"message": "Hello world from Python Jenkins CI/CD"}
 
 @app.get("/health")
 def health():

@@ -9,7 +9,7 @@ def test_home():
     assert response.status_code == 200
 
     assert response.json() == {
-        "message": "Hello from Python Jenkins CI/CD"
+        "message": "Hello world from Python Jenkins CI/CD"
     }
 
 def test_health():
