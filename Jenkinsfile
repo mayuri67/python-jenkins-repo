@@ -113,8 +113,9 @@ pipeline {
 
             /snap/bin/microk8s kubectl get services
 
+            /snap/bin/microk8s kubectl rollout restart deployment/python-app
             /snap/bin/microk8s kubectl rollout status deployment/python-app
-        '''
+    '''
     }
 }
     }
